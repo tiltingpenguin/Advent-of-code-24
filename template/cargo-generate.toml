@@ -1,0 +1,2 @@
+[template]
+include = ["{{project-name}}-input.txt", "{{project-name}}-test.txt"]

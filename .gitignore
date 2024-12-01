@@ -1,0 +1,4 @@
+target/
+debug/
+*-input.txt
+*-test.txt
