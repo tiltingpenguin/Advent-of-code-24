@@ -1,2 +1,3 @@
 [template]
-include = ["{{project-name}}-input.txt", "{{project-name}}-test.txt"]
+cargo_generate_version = ">=0.10.0"
+#include = ["{{project-name}}-input.txt", "{{project-name}}-test.txt"]

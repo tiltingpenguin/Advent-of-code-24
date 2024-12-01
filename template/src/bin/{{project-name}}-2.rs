@@ -17,7 +17,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn {{project_name}_part2_test() {
+    fn {{project-name}}_part2_test() {
         let path = "{{project-name}}-test.txt";
         let test_input = fs::read_to_string(path).expect("Should be able to read input");
         let result = process(test_input);
