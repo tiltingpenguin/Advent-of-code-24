@@ -1,0 +1,20 @@
+[package]
+name = "day10"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+#itertools.workspace = true
+nom.workspace = true
+array2d.workspace = true
+
+[workspace.dependencies]
+glam = "0.29.0"
+itertools = "0.13.0"
+nom = "7.1.3"
+rayon = "1.10.0"
+nom_locate = "4.2.0"
+nom-supreme = "0.8.0"
+array2d = "0.3.2"
