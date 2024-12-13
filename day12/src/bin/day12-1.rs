@@ -10,6 +10,8 @@ use std::fs;
 * Vecs and HashMaps caused a memory leak, despite the guarantees that rust makes.
 */
 
+//note to myself, at least use petgraph next time
+
 #[derive(Debug, PartialEq, Eq, Hash, Clone)]
 struct Tile {
     value: char,
