@@ -1,7 +1,7 @@
 use array2d::Array2D;
 use glam::IVec2;
-use pathfinding::prelude::dijkstra;
-use std::collections::HashMap;
+use pathfinding::prelude::astar_bag;
+use std::collections::{HashMap, HashSet};
 use std::fs;
 
 fn main() {
@@ -26,7 +26,7 @@ pub fn process(input: String, start_dir: IVec2) -> usize {
         let a = IVec2::new(c.0 .0 as i32, c.0 .1 as i32);
         m.insert(a, *c.1);
     }
-    let result = dijkstra(
+    let result = astar_bag(
         &(start, start_dir),
         |(pos, dir): &(IVec2, IVec2)| {
             let next = pos + dir;
@@ -40,9 +40,12 @@ pub fn process(input: String, start_dir: IVec2) -> usize {
                 ]
             }
         },
+        |_| 0,
         |&(n, _)| n == end,
-    );
-    return result.unwrap().1;
+    )
+    .unwrap();
+    let unique: HashSet<IVec2> = HashSet::from_iter(result.0.flatten().map(|(p, _)| p));
+    return unique.len();
 }
 
 #[cfg(test)]
@@ -55,15 +58,15 @@ mod tests {
         let test_input = fs::read_to_string(path).expect("Should be able to read input");
         let test_dir = IVec2::NEG_Y;
         let result = process(test_input, test_dir);
-        assert_eq!(result, 7036);
+        assert_eq!(result, 45);
     }
-
+    // for some reson the second test fails but my actual result is correct?
     #[test]
     fn day16_part1_test_2() {
         let path = "day16-2-test.txt";
         let test_input = fs::read_to_string(path).expect("Should be able to read input");
         let test_dir = IVec2::NEG_Y;
         let result = process(test_input, test_dir);
-        assert_eq!(result, 11048);
+        assert_eq!(result, 64);
     }
 }
